@@ -4,7 +4,8 @@
 
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
-#define MDIA 2 // media keys
+#define CLMK 2 // colemak layer
+#define MDIA 3 // media keys
 
 /*
  * Ordinary Ergodox EZ keyboard layout, v2
@@ -99,7 +100,50 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                      KC_PGUP,
                                                                      KC_PGDN,      KC_BSPC, KC_DEL
 ),
-/* Keymap 2: Media and mouse keys
+
+/* Keymap 2: Colemak layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |   Q  |   W  |   F  |   P  |   G  |      |           |          J  |   L  |   U  |   Y  |      |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   A  |   R  |   S  |   T  |   D  |------|           |------|   H  |   N  |   E  |   I  |      |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |        |
+ *                                 ,------|------|------|       |------+--------+------.
+ *                                 |      |      |      |       |      |        |      |
+ *                                 |      |      |------|       |------|        |      |
+ *                                 |      |      |      |       |      |        |      |
+ *                                 `--------------------'       `----------------------'
+ */
+[CLMK] = KEYMAP(  // layer 0 : default
+        // left hand
+        KC_TRNS,         KC_TRNS,         KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,
+        KC_TRNS,        KC_Q,         KC_W,   KC_F,   KC_P,   KC_G,   KC_TRNS,
+        KC_TRNS,        KC_A,         KC_R,   KC_S,   KC_T,   KC_D,
+        KC_TRNS,        KC_Z,         KC_X,   KC_C,   KC_V,   KC_B,   KC_TRNS,
+        KC_TRANS,       KC_TRNS,      KC_TRNS, KC_TRNS,KC_TRNS,
+                                              KC_TRNS,  KC_TRNS,
+                                                              KC_TRNS,
+                                               KC_TRNS,KC_TRNS,KC_TRNS,
+        // right hand
+             KC_TRNS,     KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,             KC_TRNS,
+             TG(KC_TRNS),    KC_J,   KC_L,   KC_U,   KC_Y,   KC_TRNS,          KC_TRNS,
+                          KC_H,   KC_N,   KC_E,   KC_I,   LT(MDIA, KC_TRNS),   KC_TRNS,
+             MEH_T(KC_TRNS),KC_K,   KC_M,   KC_TRNS,KC_TRNS, CTL_T(KC_TRNS),   KC_TRNS,
+                                  KC_TRNS,  KC_TRNS,KC_TRNS,KC_TRNS,          KC_TRNS,
+             KC_TRNS,        CTL_T(KC_TRNS),
+             KC_TRNS,
+             KC_TRNS,KC_TRNS, KC_TRNS
+    ),
+
+/* Keymap 3: Media and mouse keys
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  Esc   |ShutDn| Sleep| Mute |Vol Dn|Vol Up|      |           |      |      |PrtSc | PgUp |MyComp| Mail |        |
@@ -146,8 +190,9 @@ const uint16_t PROGMEM fn_actions[] = {
     [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)                // FN1 - Momentary Layer 1 (Symbols)
 };
 
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
+const macro_t *action_get_macro(keyrecord_t *record,
+        uint8_t id,
+        uint8_t opt) {
   // MACRODOWN only works in this function
       switch(id) {
         case 0:
@@ -176,15 +221,18 @@ void matrix_scan_user(void) {
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
     switch (layer) {
-      // TODO: Make this relevant to the ErgoDox EZ.
-        case 1:
+        case SYMB:
             ergodox_right_led_1_on();
             break;
-        case 2:
+        case CLMK:
+            ergodox_right_led_2_on();
+            break;
+        case MDIA:
+            ergodox_right_led_1_on();
             ergodox_right_led_2_on();
             break;
         default:
-            // none
+            // No LEDs
             break;
     }
 
