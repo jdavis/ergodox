@@ -11,6 +11,7 @@ The build instructions located in the [BUILD_GUIDE.md][build].
 ## Layout
 
 Layers:
+
 1. Default QWERTY (slightly customized)
 2. Coding
 3. Colemak
