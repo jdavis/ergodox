@@ -11,6 +11,10 @@ The build instructions located in the [BUILD_GUIDE.md][build].
 ## Layout
 
 Layers:
+1. Default QWERTY (slightly customized)
+2. Coding
+3. Colemak
+4. Media
 
 [qmk]: https://github.com/jackhumbert/qmk_firmware
 [build]: https://github.com/jackhumbert/qmk_firmware/blob/master/BUILD_GUIDE.md
