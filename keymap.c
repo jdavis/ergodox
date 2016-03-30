@@ -104,44 +104,46 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Keymap 2: Colemak layer
  *
+ * Keep everything as the default layer except for the alphabet.
+ *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   Q  |   W  |   F  |   P  |   G  |      |           |          J  |   L  |   U  |   Y  |      |        |
+ * |        |   Q  |   W  |   F  |   P  |   G  |      |           |      |   J  |   L  |   U  |   Y  |      |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   A  |   R  |   S  |   T  |   D  |------|           |------|   H  |   N  |   E  |   I  |      |        |
+ * |        |   A  |   R  |   S  |   T  |   D  |------|           |------|   H  |   N  |   E  |   I  |   O  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |   Z  |   X  |   C  |   V  |   B  |      |           |      |   K  |   M  |      |      |      |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |        |
- *                                 ,------|------|------|       |------+--------+------.
- *                                 |      |      |      |       |      |        |      |
- *                                 |      |      |------|       |------|        |      |
- *                                 |      |      |      |       |      |        |      |
- *                                 `--------------------'       `----------------------'
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
  */
-[CLMK] = KEYMAP(  // layer 0 : default
-        // left hand
-        KC_TRNS,         KC_TRNS,         KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,
-        KC_TRNS,        KC_Q,         KC_W,   KC_F,   KC_P,   KC_G,   KC_TRNS,
-        KC_TRNS,        KC_A,         KC_R,   KC_S,   KC_T,   KC_D,
-        KC_TRNS,        KC_Z,         KC_X,   KC_C,   KC_V,   KC_B,   KC_TRNS,
-        KC_TRANS,       KC_TRNS,      KC_TRNS, KC_TRNS,KC_TRNS,
-                                              KC_TRNS,  KC_TRNS,
-                                                              KC_TRNS,
-                                               KC_TRNS,KC_TRNS,KC_TRNS,
-        // right hand
-             KC_TRNS,     KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_TRNS,             KC_TRNS,
-             TG(KC_TRNS),    KC_J,   KC_L,   KC_U,   KC_Y,   KC_TRNS,          KC_TRNS,
-                          KC_H,   KC_N,   KC_E,   KC_I,   LT(MDIA, KC_TRNS),   KC_TRNS,
-             MEH_T(KC_TRNS),KC_K,   KC_M,   KC_TRNS,KC_TRNS, CTL_T(KC_TRNS),   KC_TRNS,
-                                  KC_TRNS,  KC_TRNS,KC_TRNS,KC_TRNS,          KC_TRNS,
-             KC_TRNS,        CTL_T(KC_TRNS),
-             KC_TRNS,
-             KC_TRNS,KC_TRNS, KC_TRNS
+[CLMK] = KEYMAP(
+        // Left hand
+        KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,      KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_TRNS,
+        KC_TRNS,      KC_A,    KC_R,    KC_S,    KC_T,    KC_D,
+        KC_TRNS,      KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_TRNS,
+        KC_TRANS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                                          KC_TRNS, KC_TRNS,
+                                                                   KC_TRNS,
+                                                  KC_TRNS,KC_TRNS, KC_TRNS,
+        // Right hand
+        KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS,      KC_J,    KC_L,    KC_U,    KC_Y,    KC_TRNS, KC_TRNS,
+                      KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_TRNS,
+        KC_TRNS,      KC_K,    KC_M,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                               KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS,
+        KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS
     ),
 
 /* Keymap 3: Media and mouse keys
