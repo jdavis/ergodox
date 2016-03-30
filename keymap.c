@@ -8,9 +8,10 @@
 #define MDIA 3 // media keys
 
 /*
- * Ordinary Ergodox EZ keyboard layout, v2
- * modifications from default by Nicholas Keene ergodoxez@nicholaskeene.com
- * Details: http://nicholas.rinard.us/2016/03/ergodox-ez-layout.html
+ * @jdavis Ergodox EZ layout
+ *
+ * Original layout by Nicholas Keene:
+ *     http://nicholas.rinard.us/2016/03/ergodox-ez-layout.html
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
