@@ -13,27 +13,32 @@
  *
  * Original layout by Nicholas Keene:
  *     http://nicholas.rinard.us/2016/03/ergodox-ez-layout.html
+ *
+ * Changes to make:
+ *     - Cmd + Backspace: not as easy to press since my thumb hits both
+ *     - Spacebar is only on the right. Usually hit spacebar when browsing with my mouse
+ *
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   ~    |   1  |   2  |   3  |   4  |   5  |      |           |      |   6  |   7  |   8  |   9  |   0  |        |
+ * |   ~    |   1  |   2  |   3  |   4  |   5  |      |           |  -   |   6  |   7  |   8  |   9  |   0  |   +    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |   [  |           |  ]   |   Y  |   U  |   I  |   O  |   P  | MDIA \ |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |ESC/CTRL|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |  ;   | SYMB ' |
- * |--------+------+------+------+------+------|(/~Sym|           |)/~Sym|------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------| ~Sym |           | ~Sym |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  /   | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |LCtrl | Meh  |Hyper | LAlt | LGui |                                       | Bksp | Del  | Hyper|  Meh | Symb |
+ *   |LCtrl | Meh  |Hyper | LAlt | LGui |                                       | Space|      | Hyper|  Meh | Symb |
  *   `----------------------------------'                                       `----------------------------------'
  *                                      ,---------------.       ,---------------.
  *                                      | Home   | End  |       | Left | Right  |
  *                               ,------|--------|------|       |------+--------+------.
  *                               |      |        | PgUp |       |  Up  |        |      |
- *                               |Hyper |   Meh  |------|       |------| Enter  | Space|
+ *                               |Bkspc |   Del  |------|       |------|        | Enter|
  *                               |      |        | PgDn |       | Down |        |      |;
  *                               `----------------------'       `----------------------'
  */
@@ -44,21 +49,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_GRV,        KC_1,        KC_2,  KC_3, KC_4,   KC_5, KC_TRNS,
    KC_TAB,        KC_Q,        KC_W,  KC_E, KC_R,   KC_T, KC_LBRC,
    CTL_T(KC_ESC), KC_A,        KC_S,  KC_D, KC_F,   KC_G,
-   KC_LSFT,       CTL_T(KC_Z), KC_X,  KC_C, KC_V,   KC_B, LT(SYMB, KC_LPRN),
+   KC_LSFT,       KC_Z,        KC_X,  KC_C, KC_V,   KC_B, KC_TRNS,
    KC_LCTL, MEH_T(KC_NO), ALL_T(KC_NO), KC_LALT, KC_LGUI,
                                           KC_HOME, KC_END,
                                                    KC_PGUP,
-                       ALL_T(KC_NO), MEH_T(KC_NO), KC_PGDN,
+                       KC_BSPC, KC_DEL, KC_PGDN,
 
                                                                 // right hand
                                                                 KC_MINS, KC_6, KC_7,    KC_8,    KC_9,        KC_0,          KC_EQL,
                                                                 KC_RBRC, KC_Y, KC_U,    KC_I,    KC_O,        KC_P,          KC_BSLS,
                                                                          KC_H, KC_J,    KC_K,    KC_L,        KC_SCLN,       KC_QUOT,
-                                                                TG(SYMB),KC_N, KC_M,    KC_COMM, KC_DOT,      CTL_T(KC_SLSH),KC_RSFT,
-                                                                               KC_BSPC, KC_DEL, ALL_T(KC_NO),MEH_T(KC_NO),  TG(SYMB),
+                                                                KC_TRNS, KC_N, KC_M,    KC_COMM, KC_DOT,      CTL_T(KC_SLSH),KC_RSFT,
+                                                                               KC_SPC,  KC_TRNS, TG(SYMB),    TG(CLMK),      TG(MDIA),
                                                                 KC_LEFT, KC_RGHT,
                                                                 KC_UP,
-                                                                KC_DOWN, KC_ENT, KC_SPC
+                                                                KC_DOWN, KC_TRNS, KC_ENT
     ),
     //
 /* Keymap 1: Symbol Layer
@@ -72,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| Tab  |           | Shift|------+------+------+------+------+--------|
  * |        |   %  |   ^  |   [  |   ]  |   ~  |      |           |  -Tab|   \  |   1  |   2  |   3  |   -  |  CAPS  |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |   0  |    . |   =  |   +  |      |
+ *   |      |      |      |      |      |                                       |   0  |    . |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | Left | Right|       | Home | End  |
@@ -98,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                      LSFT(KC_DOT), KC_PIPE, KC_P7,  KC_P8,   KC_P9,   KC_PSLS, KC_F12,
                                                                                    KC_SLSH, KC_P4,  KC_P5,   KC_P6,   KC_PAST, KC_TRNS,
                                                                      LSFT(KC_TAB), KC_BSLS, KC_P1,  KC_P2,   KC_P3,   KC_PMNS, KC_CAPS,
-                                                                                            KC_P0,  KC_DOT,  KC_PEQL, KC_PPLS, KC_PENT,
+                                                                                            KC_P0,  KC_DOT,  KC_TRNS, KC_TRNS, KC_TRNS,
                                                                      KC_HOME,      KC_END,
                                                                      KC_PGUP,
                                                                      KC_PGDN,      KC_BSPC, KC_DEL
