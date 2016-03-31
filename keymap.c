@@ -6,6 +6,7 @@
 #define SYMB 1 // symbols
 #define CLMK 2 // colemak layer
 #define MDIA 3 // media keys
+#define LED_BRIGHTNESS 2
 
 /*
  * @jdavis Ergodox EZ layout
@@ -217,27 +218,28 @@ void matrix_init_user(void) {
 
 // Runs constantly in the background, in a loop.
 void matrix_scan_user(void) {
-
     uint8_t layer = biton32(layer_state);
 
     ergodox_board_led_off();
     ergodox_right_led_1_off();
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
+
     switch (layer) {
         case SYMB:
-            ergodox_right_led_1_on();
+            ergodox_right_led_on(1);
+            ergodox_right_led_set(1, LED_BRIGHTNESS);
             break;
         case CLMK:
-            ergodox_right_led_2_on();
+            ergodox_right_led_on(2);
+            ergodox_right_led_set(2, LED_BRIGHTNESS);
             break;
         case MDIA:
-            ergodox_right_led_1_on();
-            ergodox_right_led_2_on();
+            ergodox_right_led_on(3);
+            ergodox_right_led_set(3, LED_BRIGHTNESS);
             break;
         default:
             // No LEDs
             break;
     }
-
-};
+}
