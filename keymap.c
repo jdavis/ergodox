@@ -16,6 +16,7 @@
  *
  * Changes to make:
  *     - Cmd + Backspace: not as easy to press since my thumb hits both
+ *     - Any modifier with Backspace is hard to hit for that matter
  *     - Spacebar is only on the right. Usually hit spacebar when browsing with my mouse
  *
  */
