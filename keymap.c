@@ -15,10 +15,7 @@
  *     http://nicholas.rinard.us/2016/03/ergodox-ez-layout.html
  *
  * Changes to make:
- *     - Cmd + Backspace: not as easy to press since my thumb hits both
- *     - Any modifier with Backspace is hard to hit for that matter
- *     - Spacebar is only on the right. Usually hit spacebar when browsing with my mouse
- *
+ *     - None so far
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -84,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        | Left | Right|       | Home | End  |
  *                                 ,------|------|------|       |------+------+------.
  *                                 |      |      |  Up  |       | PgUp |      |      |
- *                                 |Space |Enter |------|       |------|BackSp| Del  |
+ *                                 |Space |Enter |------|       |------|      | Del  |
  *                                 |      |      | Down |       | PgDn |      |      |
  *                                 `--------------------'       `--------------------'
  */
@@ -107,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                                             KC_P0,  KC_DOT,  KC_TRNS, KC_TRNS, KC_TRNS,
                                                                      KC_HOME,      KC_END,
                                                                      KC_PGUP,
-                                                                     KC_PGDN,      KC_BSPC, KC_DEL
+                                                                     KC_PGDN,      KC_TRNS, KC_DEL
 ),
 
 /* Keymap 2: Colemak layer
