@@ -3,7 +3,7 @@
 #include "action_layer.h"
 
 #define BASE 0 // default layer
-#define SYMB 1 // symbols
+#define CODE 1 // symbols
 #define CLMK 2 // colemak layer
 #define MDIA 3 // media keys
 #define LED_BRIGHTNESS 2
@@ -14,8 +14,12 @@
  * Original layout by Nicholas Keene:
  *     http://nicholas.rinard.us/2016/03/ergodox-ez-layout.html
  *
- * Changes to make:
- *     - None so far
+ * Issues:
+ *     - I hit Code, Colemak, Mdia on the bottom modifiers too often
+ *          - Fix: use modifiers there
+ *     - Since I only use the modifiers on the left side, I often remove my fingers
+ *       from the homerow
+ *          - Fix: put modifiers on the right side
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -27,16 +31,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |   [  |           |  ]   |   Y  |   U  |   I  |   O  |   P  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |ESC/CTRL|   A  |   S  |   D  |   F  |   G  |------|           |------|   H  |   J  |   K  |   L  |  ;   | '/CTRL |
- * |--------+------+------+------+------+------| ~Sym |           | ~Sym |------+------+------+------+------+--------|
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  /   | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |LCtrl | Meh  |Hyper | LAlt | LGui |                                       | Space| ~Mdia| Symb |Colemk| Mdia |
+ *   |LCtrl | Meh  |Hyper | LAlt | LGui |                                       | Space| ~Mdia| Code |Colemk| Mdia |
  *   `----------------------------------'                                       `----------------------------------'
  *                                      ,---------------.       ,---------------.
  *                                      |        |      |       |      |        |
  *                               ,------|--------|------|       |------+--------+------.
  *                               |      |        |      |       |      |        |      |
- *                               |Bkspc |   Del  |------|       |------|        | Enter|
+ *                               |Bkspc |   Del  |------|       |------| ~Code  | Enter|
  *                               |      |        | Space|       |      |        |      |
  *                               `----------------------'       `----------------------'
  */
@@ -47,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    KC_GRV,        KC_1,        KC_2,  KC_3, KC_4,   KC_5, KC_TRNS,
    KC_TAB,        KC_Q,        KC_W,  KC_E, KC_R,   KC_T, KC_LBRC,
    CTL_T(KC_ESC), KC_A,        KC_S,  KC_D, KC_F,   KC_G,
-   KC_LSFT,       KC_Z,        KC_X,  KC_C, KC_V,   KC_B, MO(SYMB),
+   KC_LSFT,       KC_Z,        KC_X,  KC_C, KC_V,   KC_B, MO(CODE),
    KC_LCTL, MEH_T(KC_NO), ALL_T(KC_NO), KC_LALT, KC_LGUI,
                                         KC_TRNS, KC_TRNS,
                                                  KC_TRNS,
@@ -57,14 +61,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 KC_MINS, KC_6, KC_7,    KC_8,    KC_9,        KC_0,          KC_EQL,
                                                                 KC_RBRC, KC_Y, KC_U,    KC_I,    KC_O,        KC_P,          KC_BSLS,
                                                                          KC_H, KC_J,    KC_K,    KC_L,        KC_SCLN,       CTL_T(KC_QUOT),
-                                                                MO(SYMB), KC_N, KC_M,    KC_COMM, KC_DOT,      KC_SLSH,       KC_RSFT,
-                                                                               KC_SPC,  MO(MDIA),TG(SYMB),    TG(CLMK),      TG(MDIA),
+                                                                MO(CODE), KC_N, KC_M,    KC_COMM, KC_DOT,      KC_SLSH,       KC_RSFT,
+                                                                               KC_SPC,  MO(MDIA),TG(CODE),    TG(CLMK),      TG(MDIA),
                                                                 KC_TRNS, KC_TRNS,
                                                                 KC_TRNS,
-                                                                KC_TRNS, KC_TRNS, KC_ENT
+                                                                KC_TRNS, MO(CODE), KC_ENT
     ),
     //
-/* Keymap 1: Symbol Layer
+/* Keymap 1: Coding Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  Esc   |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
@@ -86,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 // SYMBOLS
-[SYMB] = KEYMAP(
+[CODE] = KEYMAP(
        // left hand
        KC_ESC,  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,
        KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -195,7 +199,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-    [1] = ACTION_LAYER_TAP_TOGGLE(SYMB)                // FN1 - Momentary Layer 1 (Symbols)
+    [1] = ACTION_LAYER_TAP_TOGGLE(CODE)                // FN1 - Momentary Layer 1 (Code)
 };
 
 const macro_t *action_get_macro(keyrecord_t *record,
@@ -229,7 +233,7 @@ void matrix_scan_user(void) {
     ergodox_right_led_3_off();
 
     switch (layer) {
-        case SYMB:
+        case CODE:
             ergodox_right_led_on(1);
             ergodox_right_led_set(1, LED_BRIGHTNESS);
             break;
