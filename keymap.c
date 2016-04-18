@@ -15,11 +15,10 @@
  *     http://nicholas.rinard.us/2016/03/ergodox-ez-layout.html
  *
  * Issues:
- *     - I hit Code, Colemak, Mdia on the bottom modifiers too often
- *          - Fix: use modifiers there
- *     - Since I only use the modifiers on the left side, I often remove my fingers
- *       from the homerow
- *          - Fix: put modifiers on the right side
+ *     - Code button isn't in a very great spot
+ *          - Fix: Move to a place that is symmetrical
+ *     - The minus key (-) is in a really terrible spot
+ *          - Fix: Put it in a good place on the coding layer (this relies on the above fix as well)
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
