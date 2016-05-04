@@ -19,6 +19,7 @@
  *          - Fix: Move to a place that is symmetrical
  *     - The minus key (-) is in a really terrible spot
  *          - Fix: Put it in a good place on the coding layer (this relies on the above fix as well)
+ *     - Maybe use semicolon for a modifier?
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
