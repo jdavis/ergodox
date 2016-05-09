@@ -8,6 +8,29 @@ Use the Ergodox EZ fork of QMK located [here][qmk] for documentation.
 
 The build instructions located in the [BUILD_GUIDE.md][build].
 
+
+### Setup
+
+```bash
+brew tap osx-cross/avr
+brew install avr-libc
+brew install teensy_loader_cli
+```
+
+### Building
+
+```bash
+# Install all deps
+make install
+
+# Build
+make
+
+# Program to keyboard
+make program
+```
+
+
 ## Layout
 
 Layers:
