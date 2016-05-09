@@ -2,13 +2,18 @@ FIRMWARE_DIR=firmware
 BUILD_DIR=$(FIRMWARE_DIR)/keyboard/ergodox_ez
 CURRENT_DIR=$(shell pwd)
 KEYMAP=jdavis
+BUILD=make -C $(BUILD_DIR) KEYMAP=$(KEYMAP)
 
-build:
-	ln -fs $(CURRENT_DIR) $(BUILD_DIR)/keymaps/$(KEYMAP)
-	make -C $(BUILD_DIR) KEYMAP=$(KEYMAP)
+default: build
 
-program:
-	make -C $(BUILD_DIR) teensy
+setup:
+	ln -sfn $(CURRENT_DIR) $(BUILD_DIR)/keymaps/$(KEYMAP)
+
+build: setup
+	$(BUILD)
+
+program: setup
+	$(BUILD) teensy
 
 install:
 	git clone git@github.com:jackhumbert/qmk_firmware.git $(FIRMWARE_DIR)
@@ -16,3 +21,5 @@ install:
 
 clean:
 	make -C $(BUILD_DIR) clean
+
+.PHONY: setup build program install clean
