@@ -20,6 +20,7 @@
  *     - The minus key (-) is in a really terrible spot
  *          - Fix: Put it in a good place on the coding layer (this relies on the above fix as well)
  *     - Maybe use semicolon for a modifier?
+ *     - Easier to do Cmd + Backspace, Opt + Backspace
  *
  */
 
@@ -35,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  |      |           |      |   N  |   M  |   ,  |   .  |  /   | RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |LCtrl | Meh  |Hyper | LAlt | LGui |                                       | Space| ~Mdia| LGui | LAlt | RCtrl|
+ *   |LCtrl | LAlt |      | LAlt | LGui |                                       | Space| ~Mdia| LGui | LAlt | RCtrl|
  *   `----------------------------------'                                       `----------------------------------'
  *                                      ,---------------.       ,---------------.
  *                                      |        |      |       | Code |        |
@@ -48,11 +49,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [BASE] = KEYMAP(  // layer 0 : default
    // left hand
-   KC_GRV,        KC_1,        KC_2,  KC_3, KC_4,   KC_5, KC_TRNS,
-   KC_TAB,        KC_Q,        KC_W,  KC_E, KC_R,   KC_T, KC_LBRC,
-   CTL_T(KC_ESC), KC_A,        KC_S,  KC_D, KC_F,   KC_G,
-   KC_LSFT,       KC_Z,        KC_X,  KC_C, KC_V,   KC_B, KC_TRNS,
-   KC_LCTL, MEH_T(KC_NO), ALL_T(KC_NO), KC_LALT, KC_LGUI,
+   KC_GRV,        KC_1,    KC_2,    KC_3, KC_4, KC_5, KC_TRNS,
+   KC_TAB,        KC_Q,    KC_W,    KC_E, KC_R, KC_T, KC_LBRC,
+   CTL_T(KC_ESC), KC_A,    KC_S,    KC_D, KC_F, KC_G,
+   KC_LSFT,       KC_Z,    KC_X,    KC_C, KC_V, KC_B, KC_TRNS,
+   KC_LCTL,       KC_LALT, KC_TRNS, KC_LALT,    KC_LGUI,
                                         KC_TRNS, KC_TRNS,
                                                  KC_TRNS,
                                 KC_BSPC, KC_DEL, KC_SPC,
