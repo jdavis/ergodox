@@ -20,7 +20,6 @@
  *     - The minus key (-) is in a really terrible spot
  *          - Fix: Put it in a good place on the coding layer (this relies on the above fix as well)
  *     - Maybe use semicolon for a modifier?
- *     - Easier to do Cmd + Backspace, Opt + Backspace
  *
  */
 
