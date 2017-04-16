@@ -3,7 +3,13 @@ BUILD_DIR=$(FIRMWARE_DIR)/keyboard/ergodox_ez
 CURRENT_DIR=$(shell pwd)
 KEYMAP=jdavis
 BUILD=make -C $(BUILD_DIR) KEYMAP=$(KEYMAP)
+
+#
+# TMK Settings
+#
+
 BOOTMAGIC_ENABLE=no
+SLEEP_LED_ENABLE=no
 
 default: build
 
