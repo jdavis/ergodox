@@ -8,9 +8,8 @@
 
 #define BASE   0
 #define NUMBER 1
-#define SYMBOL 2
-#define CLMK   3
-#define MDIA   4
+#define CLMK   2
+#define MDIA   3
 
 //
 // Config
@@ -77,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 TG(CLMK),
                                                                 TG(MDIA), MO(NUMBER), KC_ENT
     ),
-    //
+
 /* Keymap 1: Number Layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
@@ -114,49 +113,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                      KC_TRNS,      KC_F6,   KC_F7,   KC_F8,     KC_F9,   KC_F10,  KC_F11,
                                                                      KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_F12,
                                                                                    KC_6,    KC_7,    KC_8,      KC_9,    KC_0,    KC_TRNS,
-                                                                     KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                            KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                     KC_TRNS, KC_TRNS,
-                                                                     KC_TRNS,
-                                                                     KC_TRNS, KC_TRNS, KC_TRNS
-),
-    //
-/* Keymap 2: Symbol Layer
- *
- * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |  Esc   |  F1  |  F2  |  F3  |  F4  |  F5  |      |           |      |  F6  |  F7  |  F8  |  F9  |  F10 |   F11  |
- * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |   F12  |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   !  |   @  |   #  |   $  |   %  |------|           |------|   ^  |   &  |   *  |   (  |   )  |        |
- * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
- * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      |      |      |      |      |                                       |      |      |      |      |      |
- *   `----------------------------------'                                       `----------------------------------'
- *                                        ,-------------.       ,-------------.
- *                                        |      |      |       |      |      |
- *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |      |
- *                                 |      |      |      |       |      |      |      |
- *                                 `--------------------'       `--------------------'
- */
-
-[SYMBOL] = KEYMAP(
-       // left hand
-       KC_ESC,  KC_F1,    KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_TRNS,
-       KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_EXLM,  KC_AT,   KC_HASH, KC_DLR,  KC_PERC,
-       KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
-                                                         KC_TRNS,KC_TRNS,
-                                                                 KC_TRNS,
-                                                   KC_TRNS,KC_TRNS,KC_TRNS,
-                                                                     // right hand
-                                                                     KC_TRNS,      KC_F6,   KC_F7,   KC_F8,     KC_F9,   KC_F10,  KC_F11,
-                                                                     KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_F12,
-                                                                                   KC_CIRC, KC_AMPR, KC_ASTR,   KC_LPRN, KC_RPRN, KC_TRNS,
                                                                      KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,   KC_TRNS, KC_TRNS, KC_TRNS,
                                                                                             KC_TRNS,  KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,
                                                                      KC_TRNS, KC_TRNS,
@@ -254,22 +210,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t PROGMEM fn_actions[] = {
     [1] = ACTION_LAYER_TAP_TOGGLE(NUMBER)                // FN1 - Momentary Layer 1 (Code)
-};
-
-const macro_t *action_get_macro(keyrecord_t *record,
-        uint8_t id,
-        uint8_t opt) {
-  // MACRODOWN only works in this function
-      switch(id) {
-        case 0:
-        if (record->event.pressed) {
-          register_code(KC_RSFT);
-        } else {
-          unregister_code(KC_RSFT);
-        }
-        break;
-      }
-    return MACRO_NONE;
 };
 
 // Runs just one time when the keyboard initializes.
