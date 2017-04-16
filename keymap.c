@@ -25,7 +25,7 @@
  *          - Fix: Move to a place that is symmetrical
  *     - The minus key (-) is in a really terrible spot
  *          - Fix: Put it in a good place on the coding layer (this relies on the above fix as well)
- *     - Maybe use semicolon for a modifier?
+ *     - Using KC_LSFT on right hand until resolved: https://github.com/qmk/qmk_firmware/issues/1233
  */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 KC_MINS, KC_6, KC_7,   KC_8,     KC_9,    KC_0,    KC_EQL,
                                                                 KC_RBRC, KC_Y, KC_U,   KC_I,     KC_O,    KC_P,    KC_BSLS,
                                                                          KC_H, KC_J,   KC_K,     KC_L,    KC_SCLN, KC_QUOT,
-                                                                KC_RPRN, KC_N, KC_M,   KC_COMM,  KC_DOT,  KC_SLSH, KC_RSFT,
+                                                                KC_RPRN, KC_N, KC_M,   KC_COMM,  KC_DOT,  KC_SLSH, KC_LSFT,
                                                                                KC_SPC, MO(MDIA), KC_RGUI, KC_RALT, KC_RCTL,
                                                                 KC_TRNS, KC_TRNS,
                                                                 KC_TRNS,
