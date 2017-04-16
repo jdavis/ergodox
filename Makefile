@@ -1,8 +1,9 @@
 FIRMWARE_DIR=firmware
-BUILD_DIR=$(FIRMWARE_DIR)/keyboard/ergodox_ez
+BUILD_DIR=$(FIRMWARE_DIR)/keyboards/ergodox
 CURRENT_DIR=$(shell pwd)
 KEYMAP=jdavis
-BUILD=make -C $(BUILD_DIR) KEYMAP=$(KEYMAP)
+KEYMAP_FILE=keymap.c
+BUILD=make -C $(BUILD_DIR) $(KEYMAP)
 
 #
 # TMK Settings
@@ -14,7 +15,8 @@ SLEEP_LED_ENABLE=no
 default: build
 
 setup:
-	ln -sfn $(CURRENT_DIR) $(BUILD_DIR)/keymaps/$(KEYMAP)
+	mkdir -p $(BUILD_DIR)/keymaps/$(KEYMAP)
+	ln -sfn $(CURRENT_DIR)/$(KEYMAP_FILE) $(BUILD_DIR)/keymaps/$(KEYMAP)/$(KEYMAP_FILE)
 
 build: setup
 	$(BUILD)
